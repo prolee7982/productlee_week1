@@ -1,22 +1,48 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Number Generator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <title>올리브 오일 vs 포탄 판별기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
-        <span id="theme-icon">🌙</span>
-    </button>
     <div class="container">
-        <h1>Lotto Number Generator</h1>
-        <div class="lotto-numbers" id="lotto-numbers"></div>
-        <button id="generate-button">Generate Numbers</button>
+        <header>
+            <h1>OliBomb Quiz</h1>
+            <p>마늘향이 첨가된 포탄인가, 아니면 진귀한 올리브 오일인가?</p>
+        </header>
+
+        <main>
+            <div id="upload-area" class="upload-box">
+                <input type="file" id="image-upload" accept="image/*" hidden>
+                <label for="image-upload" class="upload-label">
+                    <div class="upload-icon">📷</div>
+                    <p>사진을 업로드하여 판별하세요</p>
+                </label>
+            </div>
+
+            <div id="preview-area" class="preview-box" style="display: none;">
+                <img id="image-preview" src="#" alt="미리보기">
+                <button id="retry-button">다시 시도</button>
+            </div>
+
+            <div id="result-area" class="result-box" style="display: none;">
+                <div id="loading" class="loading">분석 중...</div>
+                <div id="prediction-result" class="prediction-result">
+                    <h2 id="label-text"></h2>
+                    <p id="description-text"></p>
+                    <div id="label-container"></div>
+                </div>
+            </div>
+        </main>
     </div>
+
+    <!-- TensorFlow.js 및 Teachable Machine 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
